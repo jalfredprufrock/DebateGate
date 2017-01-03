@@ -1,0 +1,274 @@
+html { background-color: #80dfff; }
+body{
+	font-family: helvetica;
+
+	background-position: absolute;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: #153C8F;
+	text-align: center;
+	margin-left: 15%;
+	margin-right: 15%;
+	margin-top: -17px;
+	margin-bottom:-20px;
+	color: #C4C4C4;
+	height: 100%;
+	display: flex;
+  flex-flow: column;
+
+}
+h1{
+	font-family: helvetica;
+	font-size: 44px;
+	margin-bottom: 15px;
+}
+h2{
+
+	font-family: helvetica;
+}
+h3{
+	margin-top:10px;
+	font-size: 26px;
+}
+#inputPanel{
+	margin-left:30%;
+	text-align: left;
+	margin-right: 15%;
+}
+/*.links{
+	text-decoration: none;
+	color:red;
+}
+.links :hover{
+	color:purple;
+}*/
+ /* unvisited link */
+a:link {
+	 font-weight: bold;
+    color: #C4C4C4;
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+	 font-weight: bold;
+    text-decoration: none;
+   color:#C4C4C4;
+}
+
+/* mouse over link */
+a:hover {
+	 font-weight: bold;
+	   text-decoration: none;
+    color: red;
+}
+
+/* selected link */
+a:active {
+	 font-weight: bold;
+	   text-decoration: none;
+   
+} 
+#pollDisplay{
+	border-color: #7A8191;
+	border-width: thin;
+	border-style: solid;
+	border: 10px solid black;
+	margin-right: 20%; 
+	margin-left: 20%;
+	padding:1px;
+	text-align: center;
+}
+#pollResults{
+	text-align: center;
+	margin: 0 auto;
+	border: 1px solid  #7A8191;
+}
+.title{
+	font-size: 14pt;
+	color: white;
+	 font-weight: bold;
+	 text-decoration: underline;
+}
+.desc{
+	 margin-left: 160px;
+	 margin-right: 160px;
+	 font-weight: bold;
+	color: white;
+}
+table{
+	 margin: 0 auto;
+	 padding: 0 25px;
+}
+th {
+  color:#D5DDE5;;
+  background:#1b1e24;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:14px;
+  font-weight: 150;
+  padding:14px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+  
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:16px;
+  font-weight:100;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+tr:hover td {
+  background:#4E5066;
+  color:#FFFFFF;
+  border-top: 1px solid #22262e;
+  border-bottom: 1px solid #22262e;
+}
+ 
+tr:first-child {
+  border-top:none;
+}
+
+tr:last-child {
+  border-bottom:none;
+}
+ 
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+tr:nth-child(odd):hover td {
+  background:#4E5066;
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+td {
+  background:#FFFFFF;
+  padding:20px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:14px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+  border-right: 0px;
+}
+
+th.text-left {
+  text-align: left;
+}
+
+th.text-center {
+  text-align: center;
+}
+
+th.text-right {
+  text-align: right;
+}
+
+td.text-left {
+  text-align: left;
+}
+
+td.text-center {
+  text-align: center;
+}
+
+td.text-right {
+  text-align: right;
+}
+hr{
+	 border:none;
+  border-top:1px dotted #f00;
+  color:red;
+  background-color:red;
+  height:3px;
+  width:75%;
+}
+label{
+	color: #C4C4C4;
+	font-weight: bold;
+}
+option{
+	color: #153C8F;
+	font-weight: normal;
+}
+.placeholder{
+	color: #153C8F;
+	font-weight: normal;
+}
+input[type=text] {
+    padding: 5px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background-color: #80dfff;
+    color: #153C8F;
+    border: 2px solid #153C8F;
+    border-radius: 4px;
+}
+input[type=text]:focus {
+    border: 3px solid #555;
+}
+.button {
+    background-color: #1b1e24; 
+    border: none;
+    color: white;
+    padding: 5px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+
+.button2 {border-radius: 4px;}
+.button2:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.button:active {
+  background-color: #595959;
+
+  transform: translateY(4px);
+}
+select {
+    
+    padding: 5px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: red;
+    text-shadow: none;
+    -webkit-text-fill-color: initial;
+}

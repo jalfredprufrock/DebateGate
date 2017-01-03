@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<title>Debate Gate</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	<script type="text/javascript"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+</head>
+
+<body>
+
+	<h1>Debate Gate</h1>
+	<h3>How do debates impact the polls and the election?</h3>
+	<hr>
+	<a class="links" href="/">Candidate Performance</a><br>
+	<a class="links" href="/demographics">Demographics Outlook</a><br>
+	<a class="links" href="/state">State Outlook</a><br>
+	<a class="links" href="/history">Historical Standings and Outcomes by Party</a><br>
+	<a class="links" href="/electoral">Electoral Votes Ranges</a><br>
+	<a class="links" href="/dates">Date/Event Impact</a><br>
+	<hr>
+
+
+	<p class='title'>Electoral Votes Ranges</p>
+
+	<p class='desc'>Find how states in specified electoral votes ranges changed in how they polled over a given time frame (A negative sign shows a decrease in the polls)</p>
+
+	<h3>Fill out the form to retrieve results</h3>
+	
+	<div>
+
+	<form action="/electoral" method="POST">
+
+		<label>Electoral Votes Lower Bound (Minimum is 3)</label>
+		<input type="text" id="lower_bound" name="lower_bound"><br>
+		
+		<label>Electoral Votes Upper Bound (Maximum is 55)</label>
+		<input type="text" id="upper_bound" name="upper_bound"><br>
+
+		<label>Start Time</label>
+		<select class='dropdown' name="first_debate">
+		
+			<option value="0"><p class='placeholder'>Before First Debate</p></option>
+			<option value="1"><p class='placeholder'>After First Debate</p></option>
+			<option value="2"><p class='placeholder'>After Second Debate</p></option>
+			<option value="3"><p class='placeholder'>After Third Debate</p></option>
+		
+		</select>
+
+		<label>End Time</label>
+		<select class='dropdown' name="second_debate">
+		
+			<option value="0"><p class='placeholder'>Before First Debate</p></option>
+			<option value="1"><p class='placeholder'>After First Debate</p></option>
+			<option value="2"><p class='placeholder'>After Second Debate</p></option>
+			<option value="3"><p class='placeholder'>After Third Debate</p></option>
+		
+		</select>
+		
+		<button class='button button2' type="submit" id="submit" name="user_submit">Submit</button>
+
+	</form>
+
+	</div>
+
+	{% if method == 'post' %}
+    	{% if data|length == 0 %}
+    		<p>No results returned for this query</p>
+  		{% else %}
+    		<table cellspacing="0">
+				<tr>
+					<th>State</th>
+					<th>Clinton Polling Change</th> 
+					<th>Trump Polling Change</th>
+				</tr>
+
+				{% for row in data %}
+					<tr>
+						<td>{{ row[0] }}</td>
+						<td>{{ row[1] }}</td>
+						<td>{{ row[2] }}</td> 
+					</tr>
+				{% endfor %}
+		
+			</table>
+  		{% endif %}
+  	{% endif %}
+
+	<p>CS336 Final Project - Asad Dar and George Chronis</p>
+
+</body>
+
+</html>

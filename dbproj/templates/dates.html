@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<title>Debate Gate</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script type="text/javascript"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+</head>
+
+<body>
+
+	<h1>Debate Gate</h1>
+	<h3>How do debates impact the polls and the election?</h3>
+	<hr>
+	<a class="links" href="/">Candidate Performance</a><br>
+	<a class="links" href="/demographics">Demographics Outlook</a><br>
+	<a class="links" href="/state">State Outlook</a><br>
+	<a class="links" href="/history">Historical Standings and Outcomes by Party</a><br>
+	<a class="links" href="/electoral">Electoral Votes Ranges</a><br>
+	<a class="links" href="/dates">Date/Event Impact</a><br>
+	<hr>
+	<p class='title'>Date/Event Impact</p>
+
+	<p class='desc'>Find how an event/scandal ended up impacting the polls in the week after. Date must be provided, user specifies name of event for display</p>
+
+	<h3>Fill out the form to retrieve results</h3>
+	
+	<div>
+
+	<form action="/dates" method="POST">
+
+		<label>Month</label>
+		<select name="month">
+		
+			<option value="08">August</option>
+			<option value="09">September</option>
+			<option value="10">October</option>
+			<option value="11">November</option>
+		
+		</select>
+
+		<label>Day</label>
+		<select name="day">
+		
+			<option value="01">01</option>
+			<option value="02">02</option>
+			<option value="03">03</option>
+			<option value="04">04</option>
+			<option value="05">05</option>
+			<option value="06">06</option>
+			<option value="07">07</option>
+			<option value="08">08</option>
+			<option value="09">09</option>
+			<option value="10">10</option>
+			<option value="11">11</option>
+			<option value="12">12</option>
+			<option value="13">13</option>
+			<option value="14">14</option>
+			<option value="15">15</option>
+			<option value="16">16</option>
+			<option value="17">17</option>
+			<option value="18">18</option>
+			<option value="19">19</option>
+			<option value="20">20</option>
+			<option value="21">21</option>
+			<option value="22">22</option>
+			<option value="23">23</option>
+			<option value="24">24</option>
+			<option value="25">25</option>
+			<option value="26">26</option>
+			<option value="27">27</option>
+			<option value="28">28</option>
+			<option value="29">29</option>
+			<option value="30">30</option>
+			<option value="31">31</option>
+		
+		</select>
+		
+		<label>Name of Event/Scandal</label>
+		<input type="text" id="event" name="event"><br>
+		
+		<button  class='button button2'  type="submit" id="submit" name="user_submit">Submit</button>
+
+	</form>
+
+	</div>
+
+	{% if method == 'post' %}
+    	{% if data|length == 0 %}
+    		<p>No results returned for this query</p>
+  		{% else %}
+  			<p> Impact of {{ event }}</p>
+    		<table cellspacing="0">
+				<tr>
+					<th>Clinton's Polling Before Event</th>
+					<th>Trump's Polling Before Event</th> 
+					<th>Clinton's Polling After Event</th>
+					<th>Trump's Polling After Event</th>
+				</tr>
+
+				{% for row in data %}
+					<tr>
+						<td>{{ row[0] }}</td>
+						<td>{{ row[1] }}</td>
+						<td>{{ row[2] }}</td>
+						<td>{{ row[3] }}</td>  
+					</tr>
+				{% endfor %}
+		
+			</table>
+  		{% endif %}
+  	{% endif %}
+
+	<p>CS336 Final Project - Asad Dar and George Chronis</p>
+
+</body>
+
+</html>

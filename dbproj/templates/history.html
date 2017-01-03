@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<title>Debate Gate</title>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	<script type="text/javascript"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+</head>
+
+<body>
+
+	<h1>Debate Gate</h1>
+	<h3>How do debates impact the polls and the election?</h3>
+<hr>
+	<a class="links" href="/">Candidate Performance</a><br>
+	<a class="links" href="/demographics">Demographics Outlook</a><br>
+	<a class="links" href="/state">State Outlook</a><br>
+	<a class="links" href="/history">Historical Standings and Outcomes by Party</a><br>
+	<a class="links" href="/electoral">Electoral Votes Ranges</a><br>
+	<a class="links" href="/dates">Date/Event Impact</a><br>
+<hr>
+	<p class='title'>Historical Standings and Outcomes by Party</p>
+
+	<p class='desc'>Find the relationship between initial polling standings and final election outcomes in past elections for a specified political party's candidates</p>
+
+	<h3>Fill out the form to retrieve results</h3>
+	
+	<div>
+
+	<form action="/history" method="POST">
+
+		<label>Political Party</label>
+		<select name="party">
+		
+			<option value="dem">Democrats</option>
+			<option value="rep">Republicans</option>
+		
+		</select>
+
+		<label>Initial Standing</label>
+		<select name="position">
+		
+			<option value="ahead">Initially Ahead in Polls</option>
+			<option value="behind">Initially Behind in Polls</option>
+		
+		</select>
+
+		<label>Election Outcome</label>
+		<select name="outcome">
+		
+			<option value="won">Won</option>
+			<option value="lost">Lost</option>
+		
+		</select>
+		
+		<button class='button button2' type="submit" id="submit" name="user_submit">Submit</button>
+
+	</form>
+
+	</div>
+
+	{% if method == 'post' %}
+    	{% if data|length == 0 %}
+    		<p>No results returned for this query</p>
+  		{% else %}
+    		<table cellspacing="0">
+				<tr>
+					<th>Year</th>
+					<th>Democrat</th> 
+					<th>Republican</th>
+					<th>Democrat's Initial Polling</th>
+					<th>Republican's Initial Polling</th>
+					<th>Democrat's Final Polling</th>
+					<th>Republican's Final Polling</th>
+
+				</tr>
+
+				{% for row in data %}
+					<tr>
+						<td>{{ row[0] }}</td>
+						<td>{{ row[1] }}</td>
+						<td>{{ row[2] }}</td> 
+						<td>{{ row[3] }}</td>
+						<td>{{ row[4] }}</td>
+						<td>{{ row[5] }}</td>
+						<td>{{ row[6] }}</td>    
+					</tr>
+				{% endfor %}
+		
+			</table>
+  		{% endif %}
+  	{% endif %}
+
+	<p>CS336 Final Project - Asad Dar and George Chronis</p>
+
+</body>
+
+</html>

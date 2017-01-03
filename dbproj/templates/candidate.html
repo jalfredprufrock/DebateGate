@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<title>Debate Gate</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	<script type="text/javascript"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+</head>
+
+<body>
+
+	<h1>Debate Gate</h1>
+	<h3>How do debates impact the polls and the election?</h3>
+<hr>
+	<a class="links"  href="/">Candidate Performance</a><br>
+	<a class="links" href="/demographics">Demographics Outlook</a><br>
+	<a class="links" href="/state">State Outlook</a><br>
+	<a class="links" href="/history">Historical Standings and Outcomes by Party</a><br>
+	<a class="links" href="/electoral">Electoral Votes Ranges</a><br>
+	<a class="links" href="/dates">Date/Event Impact</a><br>
+<hr>
+	<p class='title'>Candidate Performance</p>
+
+	<p class='desc'>Find states in which a specified candidate went up or down in the polls over a given time frame</p>
+
+	<h3>Fill out the form to retrieve results</h3>
+	
+	<div>
+
+	<form action="/" method="POST">
+
+		<label>Candidate</label>
+		<select name="candidate_name">
+		
+			<option value="Clinton">Clinton</option>
+			<option value="Trump">Trump</option>
+		
+		</select>
+
+		<label>Performance</label>
+		<select name="performance">
+		
+			<option value="increase">Increased in Polls</option>
+			<option value="decrease">Decreased in Polls</option>
+		
+		</select>
+
+		<label>Start Time</label>
+		<select name="first_debate">
+		
+			<option value="0">Before First Debate</option>
+			<option value="1">After First Debate</option>
+			<option value="2">After Second Debate</option>
+			<option value="3">After Third Debate</option>
+		
+		</select>
+
+		<label>End Time</label>
+		<select name="second_debate">
+		
+			<option value="0">Before First Debate</option>
+			<option value="1">After First Debate</option>
+			<option value="2">After Second Debate</option>
+			<option value="3">After Third Debate</option>
+		
+		</select>
+		
+		<button class='button button2' type="submit" id="submit" name="user_submit">Submit</button>
+
+	</form>
+
+	</div>
+
+	{% if method == 'post' %}
+    	{% if data|length == 0 %}
+    		<p>No results returned for this query</p>
+  		{% else %}
+    		<table cellspacing="0">
+				<tr>
+					<th>State</th>
+					<th>{{ performance }}</th> 
+				</tr>
+
+				{% for row in data %}
+					<tr>
+						<td>{{ row[0] }}</td>
+						<td>{{ row[1] }}</td>
+					</tr>
+				{% endfor %}
+		
+			</table>
+  		{% endif %}
+  	{% endif %}
+
+	<p>CS336 Final Project - Asad Dar and George Chronis</p>
+
+</body>
+
+</html>
